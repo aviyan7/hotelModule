@@ -24,6 +24,11 @@ export class LoginService {
     return this.http.post(this.baseUrl.concat(this.apiUrlEndPoint), loginData);
   }
 
+  //generate refreshToken
+  // public refreshToken() {
+  //   return this.http.post(this.baseUrl.concat(this.apiUrlEndPoint))
+  // }
+
   // Setting token in local storage
   public loginUser(token: any) {
     localStorage.setItem('token', token);

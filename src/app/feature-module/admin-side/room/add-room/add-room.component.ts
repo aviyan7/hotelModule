@@ -30,10 +30,10 @@ export class AddRoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.addroomForm = this.formBuilder.group({
-      rno: [undefined, Validators.required],
-      rtype: [undefined, Validators.required],
+      roomNumber: [undefined, Validators.required],
+      roomType: [undefined, Validators.required],
       price: [undefined, Validators.required],
-      details: '',
+      detail: '',
       image: '',
       status: ['DRAFT']
     });
@@ -49,11 +49,11 @@ export class AddRoomComponent implements OnInit {
 
   onSubmit(roomData: any) {
     this.submitted = true;
-    console.log(roomData.rno);
-    this.room.roomNumber = roomData.rNo;
-    this.room.roomType = roomData.rtype;
+    console.log(roomData.roomNumber);
+    this.room.roomNumber = roomData.roomNumber;
+    this.room.roomType = roomData.roomType;
     this.room.price = roomData.price;
-    this.room.detail = roomData.details.data;
+    this.room.detail = roomData.detail.data;
     this.room.status = roomData.status;
     this.room.image = this.imageURL;
 

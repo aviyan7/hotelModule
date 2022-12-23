@@ -16,7 +16,7 @@ export class ListRoomComponent implements OnInit {
 
   toggleArray: { toggled: boolean }[] = [];
 
-  status: string = 'PUBLISHED';
+  status: string = '';
 
   constructor(
     private router: Router,
@@ -31,7 +31,7 @@ export class ListRoomComponent implements OnInit {
   getAllRoomData() {
     this.roomService.listAllRooms(this.status).subscribe(
       (response: any) => {
-        this.rooms = response.roomdata;
+        this.rooms = response.rooms;
         console.log(this.rooms);
         this.total = response.total;
         this.rooms?.forEach(() => this.toggleArray.push({ toggled: false }));

@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Room } from '../models/room.model';
 import { Location } from '@angular/common';
 import { RoomService} from '../services/room.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-room',
@@ -21,27 +22,47 @@ export class EditRoomComponent implements OnInit {
   imageTypeError: boolean = false;
   
   fileName: any;
-
+  id: any | number;
   constructor(
     private formBuilder: FormBuilder,
     private location: Location,
     private roomService: RoomService,
+    private activatedRoute: ActivatedRoute,
     // private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.editroomForm = this.formBuilder.group({
-      rno: [undefined, Validators.required],
-      rtype: [undefined, Validators.required],
+      roomNumber: [undefined, Validators.required],
+      roomType: [undefined, Validators.required],
       price: [undefined, Validators.required],
-      details: '',
+      detail: '',
       image: '',
       status: ['DRAFT'],
     });
+
+    this.activatedRoute.params.subscribe((param) => {
+      this.id = param['id'];
+    });
+
+    this.initRoomById(this.id);
   }
 
   get forms(): { [key: string]: AbstractControl } {
     return this.editroomForm.controls;
+  }
+
+  initRoomById(id: number) {
+    this.roomService.getRoomById(id).subscribe(
+      (response) => {
+        this.room = response;
+        this.editroomForm.patchValue(this.room);
+        // this.image = this.room.image.url;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   goBack() {
@@ -50,8 +71,8 @@ export class EditRoomComponent implements OnInit {
 
   onSubmit(roomData: any) {
     this.submitted = true;
-    this.room.roomNumber = roomData.rNo;
-    this.room.roomType = roomData.rtype;
+    this.room.roomNumber = roomData.roomNumber;
+    this.room.roomType = roomData.roomType;
     this.room.price = roomData.price;
     this.room.detail = roomData.detail.data;
     this.room.status = roomData.status;

@@ -57,9 +57,6 @@
               <td class="cms_sm_col centeralign">
                 <label class="cms_label">{{ i + 1 }}</label>
               </td>
-              <td class="cms_sm_col centeralign">
-                <label class="cms_label">{{ room.status.charAt(0) }}</label>
-              </td>
               <td class="cms_sm_col">
                 <!-- <img
                   [src]="room?.image?.url"
@@ -68,13 +65,22 @@
                 /> -->a
               </td>
               <td>
+                <label class="cms_label">{{ room.roomNumber }}</label>
+              </td>
+              <td>
                 <label class="cms_label">{{ room.roomType }}</label>
+              </td>
+              <td>
+                <label class="cms_label">{{ room.price }}</label>
               </td>
               <td>
                 <label
                   class="cms_label"
                   [innerHTML]="room.detail"
                 ></label>
+              </td>
+              <td class="cms_sm_col centeralign">
+                <label class="cms_label">{{ room.status.charAt(0) }}</label>
               </td>
               <td class="cms_sm_col centeralign">
                 <div class="dropdown">
@@ -89,7 +95,7 @@
                         href="javascript:void(0);"
                       >
                         <mat-icon class="cms_icon action_icons">edit</mat-icon>
-                        Edit Record
+                        Edit Room
                       </a>
                     </li>
                     <li>
@@ -99,7 +105,7 @@
                         href="javascript:void(0);"
                       >
                         <mat-icon class="cms_icon action_icons">delete</mat-icon>
-                        Delete Record
+                        Delete Room
                       </a>
                     </li>
                     <li>

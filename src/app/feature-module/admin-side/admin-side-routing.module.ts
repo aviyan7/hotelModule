@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminSideComponent } from './admin-side.component';
-import { AuthIntercepter, authInterceptorProviders } from 'src/app/services/auth.interceptor';
 import { PasswordComponent } from './password/password.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

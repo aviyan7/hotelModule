@@ -13,15 +13,15 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label>Room Number <span class="text-danger">*</span> </label>
-                  <input class="form-control" type="number" formControlName="rno" name="rno"
+                  <input class="form-control" type="number" formControlName="roomNumber" name="roomNumber"
                     placeholder="Enter Room Number" />
                   <span *ngIf="
                       submitted ||
-                      forms['rno'].dirty ||
-                      (forms['rno'].touched && forms['rno'].invalid)
+                      forms['roomNumber'].dirty ||
+                      (forms['roomNumber'].touched && forms['roomNumber'].invalid)
                     " class="info-msg text-danger">
-                    <small *ngIf="forms['rno'].errors &&
-                                      forms['rno'].errors?.['required']">
+                    <small *ngIf="forms['roomNumber'].errors &&
+                                      forms['roomNumber'].errors?.['required']">
                       Room Number is required !
                     </small>
                   </span>
@@ -31,15 +31,15 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label>Room Type <span class="text-danger">*</span> </label>
-                  <input class="form-control" type="text" formControlName="rtype" name="rtype"
+                  <input class="form-control" type="text" formControlName="roomType" name="roomType"
                     placeholder="Enter Room Type" />
                   <span *ngIf="
                       submitted ||
-                      forms['rtype'].dirty ||
-                      (forms['rtype'].touched && forms['rtype'].invalid)
+                      forms['roomType'].dirty ||
+                      (forms['roomType'].touched && forms['roomType'].invalid)
                     " class="info-msg text-danger">
-                    <small *ngIf="forms['rtype'].errors &&
-                                      forms['rtype'].errors?.['required']">
+                    <small *ngIf="forms['roomType'].errors &&
+                                      forms['roomType'].errors?.['required']">
                       Room Type is required !
                     </small>
                   </span>
@@ -66,7 +66,7 @@
   
               <!-- <div class="col-sm-12">
                 <app-rich-editor
-                  formControlName="details"
+                  formControlName="detail"
                   [labelName]="'Details'"
                 ></app-rich-editor>
               </div> -->
@@ -140,9 +140,9 @@
                   <img class="w-100" src="{{ fileName }}" alt="" />
                 </div>
                 <div class="col-md-6 detail-box">
-                  <h6>{{ addroomForm.get("rno")?.value }}</h6>
-                  <h5>{{ addroomForm.get("rtype")?.value }}</h5>
-                  <p [innerHTML]="addroomForm.get('details')?.value?.data"></p>
+                  <h6>{{ addroomForm.get("roomNumber")?.value }}</h6>
+                  <h5>{{ addroomForm.get("roomType")?.value }}</h5>
+                  <p [innerHTML]="addroomForm.get('detail')?.value?.data"></p>
                   <a href="" class="btn btn-outline-dark">Read More</a>
                 </div>
               </div>
