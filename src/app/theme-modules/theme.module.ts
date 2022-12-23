@@ -19,9 +19,11 @@ import {MatButtonModule} from "@angular/material/button";
 // import {RichEditorComponent} from "../core/common/components/rich-editor/rich-editor.component";
 import {MatButtonToggle, MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatCardModule} from "@angular/material/card";
+import { MatInputModule } from '@angular/material/input';
 // import {PipesModule} from "../core/pipes/pipes.module";
 // import { StatusFilterComponent } from '../core/common/components/status-filter/status-filter.component';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 const BASE_MODULES: Array<any> = [
    NgbModule,
   FormsModule,
@@ -42,6 +44,9 @@ const MAT_MODULES: Array<any> = [
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule
 ];
 
 const COMPONENTS: Array<any> = [

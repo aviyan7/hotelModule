@@ -10,20 +10,22 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Home',
       icon: 'home',
-      url: '',
-      // url: '/admin/home',
+      url: '/admin/home',
     },
     {
       name: 'Dashboard',
       icon: 'dashboard',
-      url: '',
-      // url: '/admin/dashboard',
+       url: '/admin/dashboard',
     },
     {
       name: 'Room',
       icon: 'photo',
-      url: '',
-      // url: '/admin/room',
+       url: '/admin/room',
+    },
+    {
+      name: 'Password',
+      icon: 'password',
+      url: '/admin/password'
     },
     {
       name:'ContactUs',

@@ -1,0 +1,156 @@
+<div class="container">
+    <div class="row mt-3">
+      <div class="col-sm-6">
+        <div class="card shadow bg-body rounded p-3">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>Add Room</h4>
+            </div>
+          </div>
+          <hr class="cms_line" />
+          <form [formGroup]="addroomForm">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>Room Number <span class="text-danger">*</span> </label>
+                  <input class="form-control" type="number" formControlName="rno" name="rno"
+                    placeholder="Enter Room Number" />
+                  <span *ngIf="
+                      submitted ||
+                      forms['rno'].dirty ||
+                      (forms['rno'].touched && forms['rno'].invalid)
+                    " class="info-msg text-danger">
+                    <small *ngIf="forms['rno'].errors &&
+                                      forms['rno'].errors?.['required']">
+                      Room Number is required !
+                    </small>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>Room Type <span class="text-danger">*</span> </label>
+                  <input class="form-control" type="text" formControlName="rtype" name="rtype"
+                    placeholder="Enter Room Type" />
+                  <span *ngIf="
+                      submitted ||
+                      forms['rtype'].dirty ||
+                      (forms['rtype'].touched && forms['rtype'].invalid)
+                    " class="info-msg text-danger">
+                    <small *ngIf="forms['rtype'].errors &&
+                                      forms['rtype'].errors?.['required']">
+                      Room Type is required !
+                    </small>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>Price <span class="text-danger">*</span> </label>
+                  <input class="form-control" type="number" formControlName="price" name="price"
+                    placeholder="Enter Price of the Room" />
+                  <span *ngIf="
+                      submitted ||
+                      forms['price'].dirty ||
+                      (forms['price'].touched && forms['price'].invalid)
+                    " class="info-msg text-danger">
+                    <small *ngIf="forms['price'].errors &&
+                                      forms['price'].errors?.['required']">
+                      Price of Room is required !
+                    </small>
+                  </span>
+                </div>
+              </div>
+  
+              <!-- <div class="col-sm-12">
+                <app-rich-editor
+                  formControlName="details"
+                  [labelName]="'Details'"
+                ></app-rich-editor>
+              </div> -->
+  
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>Image <span class="text-danger">*</span> </label>
+                  <input class="form-control" type="file" accept=".png, .jpg, .jpeg" (change)="onFileSelected($event)" />
+                  <span *ngIf="submitted || isPresentFile" class="info-msg text-danger">
+                    <small *ngIf="!isPresentFile"> Image is required ! </small>
+                    <small *ngIf="imageTypeError">
+                      Only jpg, jpeg and png with size < 5MB allowed ! </small>
+                  </span>
+                </div>
+              </div>
+  
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="status"
+                      formControlName="status"
+                      value="DRAFT"
+                    />
+                    <label class="form-check-label">Draft</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="status"
+                      formControlName="status"
+                      value="PUBLISHED"
+                    />
+                    <label class="form-check-label">Publish</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-buttons">
+                  <button mat-stroked-button color="primary" (click)="onCancel()">
+                    Cancel
+                  </button>
+                  <button mat-raised-button color="primary" (click)="onSubmit(addroomForm.value)">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card shadow bg-body rounded p-3 sticky-md-top">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>Preview About Details</h4>
+            </div>
+          </div>
+          <hr class="cms_line" />
+          <!-- preview start  -->
+  
+          <section class="py-3 about-section">
+            <div class="container">
+              <div class="py-3 row">
+                <div class="col-md-6 img-box">
+                  <img class="w-100" src="{{ fileName }}" alt="" />
+                </div>
+                <div class="col-md-6 detail-box">
+                  <h6>{{ addroomForm.get("rno")?.value }}</h6>
+                  <h5>{{ addroomForm.get("rtype")?.value }}</h5>
+                  <p [innerHTML]="addroomForm.get('details')?.value?.data"></p>
+                  <a href="" class="btn btn-outline-dark">Read More</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- end preview  -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

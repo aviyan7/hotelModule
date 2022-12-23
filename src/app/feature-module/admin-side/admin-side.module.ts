@@ -7,17 +7,16 @@ import {HomeComponent} from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PasswordComponent } from './password/password.component';
 import { AdminSideRoutingModule } from './admin-side-routing.module';
-import { RoomComponent } from './room/room.component';
+
 
 @NgModule({
   declarations: [
-    AdminSideComponent
+    AdminSideComponent,
     HomeComponent,
     DashboardComponent,
-    PasswordComponent,
-    RoomComponent
+    PasswordComponent
   ],
-  imports: [CommonModule, AdminSideRoutingModule, ThemeModule.forChild()],
+  imports: [CommonModule, AdminSideRoutingModule, ThemeModule.forChild()]
 })
 export class AdminSideModule {
 }

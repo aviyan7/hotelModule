@@ -11,6 +11,10 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./feature-module/feature.module').then(m => m.FeatureModule)
     },
+    // {
+    //     path: 'auth',
+    //     loadChildren: () => import('./auth/auth.module').then(m=>m.AuthModule)
+    // },
     {
         path: '**',
         redirectTo: ''

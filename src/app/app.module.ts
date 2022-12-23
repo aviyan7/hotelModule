@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './theme-modules/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthIntercepter, authInterceptorProviders } from './services/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [authInterceptorProviders]
 })
 export class AppModule { }

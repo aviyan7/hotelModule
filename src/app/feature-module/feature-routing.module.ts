@@ -24,14 +24,17 @@ const routes: Routes = [
     //   },
       {
         path: 'admin',
-        component: AdminSideComponent,
         canActivate: [AdminGuard],
-        // loadChildren: () =>
-        //   import('./admin-side/admin-side.module').then(
-        //     (m) => m.AdminSideModule
-        //   ),
-        //   runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        loadChildren: () =>
+          import('./admin-side/admin-side.module').then(
+            (m) => m.AdminSideModule
+          ),
+          runGuardsAndResolvers: 'paramsOrQueryParamsChange',
       },
+      {
+        path: 'auth',
+        loadChildren: () => import('../auth/auth.module').then(m=>m.AuthModule)
+    },
       {
         path: '**',
         redirectTo: 'home',

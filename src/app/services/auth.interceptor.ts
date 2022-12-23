@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginService } from './login.service';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-
+export class AuthIntercepter implements HttpInterceptor {
   constructor(private loginService: LoginService) {}
 
   intercept(
@@ -25,6 +25,15 @@ export class AuthInterceptor implements HttpInterceptor {
         setHeaders: { Authorization: `Bearer ${token}` },
       });
     }
+    console.log(authRequest.headers);
     return next.handle(authRequest);
   }
 }
+
+export const authInterceptorProviders = [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthIntercepter,
+    multi: true,
+  },
+];
