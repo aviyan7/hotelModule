@@ -1,44 +1,101 @@
-<div class="container">
-    <div class="row mt-3 d-flex justify-content-center">
-      <div class="col-md-6">
-        <mat-card>
-          <h1 class="d-flex align-items-center justify-content-center">
-            Login Here <mat-icon>login</mat-icon>
-          </h1>
-  
-          <form [formGroup]="userLoginForm">
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Username</mat-label>
-              <input
-                formControlName="username"
-                type="text"
-                matInput
-                placeholder="Enter username"
-              />
-            </mat-form-field>
-  
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Password</mat-label>
-              <input
-                formControlName="password"
-                type="password"
-                matInput
-                placeholder="Enter password"
-              />
-            </mat-form-field>
-  
-            <div class="container text-center">
-              <button
-                (click)="loginUser(userLoginForm.value)"
-                mat-raised-button
-                color="primary"
-              >
-                Login
-              </button>
-            </div>
-          </form>
-        </mat-card>
-      </div>
+<!--<div class="container">-->
+<!--    <div class="row mt-3 d-flex justify-content-center">-->
+<!--      <div class="col-md-6">-->
+<!--        <mat-card>-->
+<!--          <h1 class="d-flex align-items-center justify-content-center">-->
+<!--            Login Here <mat-icon>login</mat-icon>-->
+<!--          </h1>-->
+<!--  -->
+<!--          <form [formGroup]="userLoginForm">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--              <mat-label>Username</mat-label>-->
+<!--              <input-->
+<!--                formControlName="username"-->
+<!--                type="text"-->
+<!--                matInput-->
+<!--                placeholder="Enter username"-->
+<!--              />-->
+<!--            </mat-form-field>-->
+<!--  -->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--              <mat-label>Password</mat-label>-->
+<!--              <input-->
+<!--                formControlName="password"-->
+<!--                type="password"-->
+<!--                matInput-->
+<!--                placeholder="Enter password"-->
+<!--              />-->
+<!--            </mat-form-field>-->
+<!--  -->
+<!--            <div class="container text-center">-->
+<!--              <button-->
+<!--                (click)="loginUser(userLoginForm.value)"-->
+<!--                mat-raised-button-->
+<!--                color="primary"-->
+<!--              >-->
+<!--                Login-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--        </mat-card>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<div class="row p-3">
+  <div class="col-sm-12">
+    <div class="font-size-18 text-muted mt-2 text-center">
+      <form [formGroup]="userLoginForm" class="form-horizontal">
+        <div class="mb-3">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Username"
+                 formControlName="username" class="form-control" required autofocus
+          [ngClass]="{'is-invalid': submitted && forms['username'].errors, 'is-valid': forms['username'].valid } ">
+          <span *ngIf="submitted || forms['username'].touched || forms['username'].dirty && forms['username'].invalid"
+                class="info-msg text-danger">
+          <small
+            *ngIf="forms['username'].errors && forms['username'].errors?.['required']">Username is required</small>
+          <small *ngIf="forms['username'].errors && forms['username'].errors?.['minlength']">Should have at least 2 characters.</small>
+        </span>
+        </div>
+
+        <div class="mb-3">
+          <label>Password</label>
+          <input id="password" type="password" autocomplete="new-password" formControlName="password" class="form-control"
+                 name="password" required
+                 [ngClass]="{ 'is-invalid': submitted && forms['password'].errors, 'is-valid': forms['password'].valid }"
+                 placeholder="Password" formControlName="password"
+          />
+          <span *ngIf="submitted || forms['password'].touched || forms['password'].dirty && forms['password'].invalid"
+                class="info-msg text-danger">
+          <small
+            *ngIf="forms['password'].errors && forms['password'].errors?.['required']">Password is required</small>
+          <small
+            *ngIf="forms['password'].errors && forms['password'].errors?.['minlength']">Should have at least {{passwordLength}}
+            characters.</small>
+        </span>
+        </div>
+
+        <div class="row mt-4 mb-4" *ngIf="errorMessage">
+          <div class="col-12">
+          <span class="info-msg text-danger">
+            {{errorMessage | titlecase}}
+          </span>
+          </div>
+        </div>
+
+        <div class="row mt-2 mb-2">
+          <div class="col-12 text-center">
+            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit"
+                    (click)="loginUser(userLoginForm.value)"
+                    [disabled]="submitted && loading[0]">
+              <span *ngIf="loading[0]" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              {{btnStatus}}
+            </button>
+          </div>
+        </div>
+
+      </form>
     </div>
   </div>
-  
+</div>

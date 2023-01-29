@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  sidebarMenus: Array<any> = new Array<any>(
+  sideBarMenus: Array<any> = new Array<any>(
     {
       name: 'Home',
       icon: 'home',
@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit {
       url: '',
       // url:'/admin/contact-us'
     },
-    
+
   );
   constructor() { }
 

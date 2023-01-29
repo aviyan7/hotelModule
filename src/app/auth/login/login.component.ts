@@ -3,7 +3,7 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
@@ -15,8 +15,13 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  userLoginForm: FormGroup = new FormGroup({});
-
+   userLoginForm: FormGroup = new FormGroup({});
+   errorMessage: string = '';
+   submitted: boolean = false;
+   title: string = 'Sign in to continue !';
+  loading: boolean[] = [false,false];
+   passwordLength: number = 2;
+  btnStatus: string = 'Sign In';
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -63,7 +68,7 @@ export class LoginComponent implements OnInit {
   initForm() {
     this.userLoginForm = this.formBuilder.group({
       username: [undefined, Validators.required],
-      password: [undefined, Validators.required],
+      password: [undefined, Validators.compose([Validators.required, Validators.minLength(2)])],
     });
   }
 }

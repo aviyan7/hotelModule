@@ -6,10 +6,44 @@
   <h2 matSubheader class="mt-2">APPLICATIONS</h2>
 
   <a mat-list-item
-     *ngFor="let m of sidebarMenus; let i= index;"
+     *ngFor="let m of sideBarMenus; let i= index;"
      [routerLink]="m?.url || null"
      [routerLinkActive]="m?.url ? 'list-item-active' : ''">
     <mat-icon>{{m?.icon}}</mat-icon>
     {{m?.name}}
   </a>
 </mat-nav-list>
+
+<!--<div class="vertical-menu">-->
+
+<!--  <div data-simplebar class="h-100">-->
+
+<!--    &lt;!&ndash;- Sidemenu &ndash;&gt;-->
+<!--    <div id="sidebar-menu">-->
+<!--      &lt;!&ndash; Left Menu Start &ndash;&gt;-->
+<!--      <ul class="metismenu list-unstyled" id="side-menu">-->
+<!--        <li class="menu-title">Menu</li>-->
+<!--        <li *ngFor="let m of sideBarMenus; let i=index;">-->
+<!--          <span>{{m?.title}}</span>-->
+<!--          <a routerLinkActive="active" [routerLink]="m?.children ? null : [m?.link]" href="javascript:void(0);" [ngClass]="m?.children ? 'has-arrow waves-effect' : ''">-->
+<!--            <i [class]="m?.icon"></i>-->
+<!--            &lt;!&ndash; <span class="badge rounded-pill bg-success float-end">3</span> &ndash;&gt;-->
+<!--            <span>{{m?.title}}</span>-->
+<!--          </a>-->
+<!--          <ul *ngIf="m?.children" class="sub-menu" aria-expanded="true">-->
+<!--            <li *ngFor="let child of m?.children; let j=index">-->
+<!--              <a routerLinkActive="active" [routerLink]="child?.link" href="javascript:void(0);" class="waves-effect">-->
+<!--                <i [class]="child?.icon"></i>-->
+<!--                <span>{{child?.title}}</span>-->
+<!--              </a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--          &lt;!&ndash; end ul &ndash;&gt;-->
+<!--        </li>-->
+<!--        &lt;!&ndash; end li &ndash;&gt;-->
+<!--      </ul>-->
+<!--      &lt;!&ndash; end ul &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Sidebar &ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->

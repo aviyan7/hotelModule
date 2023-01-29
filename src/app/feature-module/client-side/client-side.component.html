@@ -1,1 +1,27 @@
 <p>client-side works!</p>
+
+<div class="col-sm-4 form-field">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control form-control-sm sb_input" placeholder="Period of Facility"
+      id="periodOfFacility"
+      formControlName="periodOfFacility"/>
+    <label for="periodOfFacility" class="sb_floating_label">
+      <strong>Period of Facility</strong>
+      <span class="text-danger">*</span>
+    </label>
+    <span
+      *ngIf="submitted || form['periodOfFacility']?.dirty && form['periodOfFacility']?.invalid"
+      class="info-msg text-danger">
+          <small
+            *ngIf="form['periodOfFacility']?.errors && form['periodOfFacility'].errors?.['max']">
+            Exceeds maximum tenure.
+          </small>
+            <small
+              *ngIf="form['periodOfFacility']?.errors && form['periodOfFacility'].errors?.['required']">
+              Period is required.
+            </small>
+          </span>
+  </div>
+</div>
